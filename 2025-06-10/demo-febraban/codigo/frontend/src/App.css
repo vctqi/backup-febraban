@@ -1,0 +1,92 @@
+/* Estilos globais */
+body {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos para os cards e componentes */
+.card {
+  border-radius: 8px;
+  border: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Estilos para os badges de risco */
+.badge-risco {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+}
+
+/* Estilo para o formulário */
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Cores personalizadas para os níveis de risco */
+.bg-baixo {
+  background-color: #28a745;
+}
+
+.bg-medio {
+  background-color: #ffc107;
+}
+
+.bg-alto {
+  background-color: #dc3545;
+}
+
+/* Animações para elementos de loading */
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+.loading-pulse {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Estilos para tabelas */
+.table {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+}
+
+.table thead th {
+  border-top: none;
+  background-color: #f8f9fa;
+}
+
+/* Estilos para histórico */
+.historico-item {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.historico-item:hover {
+  background-color: #f1f8ff;
+}

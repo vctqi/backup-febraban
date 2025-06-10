@@ -1,0 +1,222 @@
+/* Variáveis globais */
+:root {
+  --primary-color: #006633; /* Verde escuro do Banco da Amazônia */
+  --secondary-color: #FFCC00; /* Amarelo do Banco da Amazônia */
+  --tertiary-color: #009933; /* Verde médio */
+  --light-color: #F5F5F5;
+  --dark-color: #333333;
+  --gray-color: #707070;
+  --light-gray: #E0E0E0;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --info-color: #17a2b8;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: var(--dark-color);
+  line-height: 1.6;
+}
+
+/* Layout principal */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px 0;
+}
+
+/* Containers */
+.container-custom {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.page-section {
+  padding: 40px 0;
+}
+
+/* Botões estilizados */
+.btn-primary-custom {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+  background-color: #004d26;
+  border-color: #004d26;
+}
+
+.btn-secondary-custom {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--dark-color);
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary-custom:hover {
+  background-color: #e6b800;
+  border-color: #e6b800;
+}
+
+/* Cards */
+.card-custom {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  margin-bottom: 20px;
+  border: none;
+}
+
+.card-header-custom {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px 20px;
+  font-weight: 600;
+}
+
+.card-body-custom {
+  padding: 20px;
+}
+
+/* Formulários */
+.form-control-custom {
+  border-radius: 4px;
+  padding: 12px 15px;
+  border: 1px solid var(--light-gray);
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.form-control-custom:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(0, 102, 51, 0.25);
+  outline: none;
+}
+
+.form-label-custom {
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+  color: var(--dark-color);
+}
+
+/* Tabelas */
+.table-custom {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-custom th {
+  background-color: var(--primary-color);
+  color: white;
+  text-align: left;
+  padding: 12px 15px;
+}
+
+.table-custom td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.table-custom tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Textos e tipografia */
+.title-primary {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.title-secondary {
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.text-primary-custom {
+  color: var(--primary-color);
+}
+
+.text-secondary-custom {
+  color: var(--secondary-color);
+}
+
+/* Alertas e notificações */
+.alert-custom {
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-left: 4px solid transparent;
+}
+
+.alert-info-custom {
+  background-color: #e7f2fa;
+  border-left-color: var(--info-color);
+  color: #0c5460;
+}
+
+.alert-success-custom {
+  background-color: #e7f6eb;
+  border-left-color: var(--success-color);
+  color: #155724;
+}
+
+.alert-warning-custom {
+  background-color: #fff8e6;
+  border-left-color: var(--warning-color);
+  color: #856404;
+}
+
+.alert-danger-custom {
+  background-color: #f8d7da;
+  border-left-color: var(--danger-color);
+  color: #721c24;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container-custom {
+    padding: 0 10px;
+  }
+  
+  .page-section {
+    padding: 20px 0;
+  }
+  
+  .form-control-custom {
+    padding: 10px 12px;
+  }
+  
+  .btn-primary-custom,
+  .btn-secondary-custom {
+    padding: 8px 18px;
+  }
+}

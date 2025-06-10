@@ -1,0 +1,274 @@
+.resultado-page {
+  padding-bottom: 40px;
+}
+
+.page-header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 40px 0;
+  margin-bottom: 30px;
+}
+
+.page-title {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.page-description {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Cards */
+.resultado-card,
+.grafico-card,
+.tabela-card,
+.perfil-card,
+.dados-card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.resultado-card-header {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+}
+
+.grafico-card-header,
+.tabela-card-header {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+}
+
+.perfil-card-header,
+.dados-card-header {
+  background-color: var(--secondary-color);
+  color: var(--dark-color);
+  font-weight: 600;
+}
+
+/* Detalhes da linha recomendada */
+.linha-titulo {
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.linha-descricao {
+  color: var(--gray-color);
+  margin-bottom: 0;
+}
+
+.resultado-detalhes {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px 10px;
+}
+
+.detalhe-item {
+  text-align: center;
+  padding: 10px;
+}
+
+.detalhe-label {
+  font-size: 0.85rem;
+  color: var(--gray-color);
+  margin-bottom: 5px;
+}
+
+.detalhe-valor {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dark-color);
+}
+
+/* Economia */
+.economia-info {
+  background-color: #e7f6eb;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.economia-badge {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--success-color);
+  margin-bottom: 5px;
+}
+
+.economia-texto {
+  font-size: 0.85rem;
+  color: var(--gray-color);
+  margin-bottom: 0;
+}
+
+/* Gráficos */
+.grafico-container {
+  padding: 10px;
+  height: 300px;
+}
+
+/* Perfil de risco */
+.perfil-info {
+  padding: 10px;
+}
+
+.perfil-label {
+  font-weight: 600;
+  margin-right: 10px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.perfil-badge {
+  font-size: 1rem;
+  padding: 5px 10px;
+}
+
+.score-progress {
+  height: 20px;
+  background-color: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 5px;
+}
+
+.score-bar {
+  height: 100%;
+  background-color: var(--success-color);
+  border-radius: 10px;
+}
+
+.score-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-color);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.ajuste-valor {
+  font-weight: 600;
+}
+
+.perfil-tip {
+  background-color: #fff8e6;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  gap: 15px;
+}
+
+.tip-icon {
+  font-size: 1.5rem;
+  color: var(--warning-color);
+}
+
+.tip-content h6 {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.tip-content p {
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}
+
+/* Dados da simulação */
+.dados-table {
+  margin-bottom: 0;
+}
+
+.dados-table td {
+  padding: 8px 0;
+}
+
+.dados-table td:first-child {
+  width: 45%;
+}
+
+/* Tabela de comparação */
+.table-responsive {
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+/* Impressão */
+@media print {
+  .action-buttons,
+  .cta-button,
+  .dados-buttons,
+  .navbar,
+  .footer,
+  .btn {
+    display: none !important;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+  }
+  
+  .page-header {
+    background-color: white !important;
+    color: #333 !important;
+    padding: 20px 0 !important;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .page-header {
+    padding: 30px 0;
+  }
+  
+  .page-title {
+    font-size: 1.8rem;
+  }
+  
+  .page-description {
+    font-size: 1rem;
+  }
+  
+  .detalhe-item {
+    margin-bottom: 15px;
+  }
+  
+  .grafico-container {
+    height: 250px;
+  }
+}

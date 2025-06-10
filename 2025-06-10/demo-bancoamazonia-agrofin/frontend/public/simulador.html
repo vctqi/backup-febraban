@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Financiamento | Banco da Amazônia</title>
+    <style>
+        :root {
+            --primary-color: #006B3F;
+            --secondary-color: #004D24;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+        }
+        
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .form-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .resultado {
+            display: none;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+        
+        .resultado h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .resultado-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .resultado-destaque {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        .erro {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Financiamento Agropecuário | Banco da Amazônia</h1>
+    </header>
+    
+    <div class="container">
+        <div class="form-container">
+            <h2>Simulador de Financiamento</h2>
+            <p>
+                Bem-vindo ao simulador de financiamento agropecuário do Banco da Amazônia.
+                Aqui você pode calcular as melhores opções de crédito para seu projeto rural.
+            </p>
+            
+            <div id="erro-mensagem" class="erro"></div>
+            
+            <form id="simulador-form">
+                <div class="form-group">
+                    <label for="valorSolicitado">Valor do Financiamento:</label>
+                    <input 
+                        type="number" 
+                        id="valorSolicitado" 
+                        placeholder="R$ 0,00" 
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="rendaMensal">Renda Mensal:</label>
+                    <input 
+                        type="number" 
+                        id="rendaMensal" 
+                        placeholder="R$ 0,00" 
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="tipoFinanciamento">Tipo de Financiamento:</label>
+                    <select id="tipoFinanciamento" required>
+                        <option value="">Selecione...</option>
+                        <option value="investimento_fixo">Investimento Fixo</option>
+                        <option value="investimento_semifixo">Investimento Semifixo</option>
+                        <option value="custeio_agricola">Custeio Agrícola</option>
+                        <option value="custeio_pecuario">Custeio Pecuário</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="prazoMeses">Prazo (em meses):</label>
+                    <select id="prazoMeses">
+                        <option value="12">12 meses</option>
+                        <option value="24">24 meses</option>
+                        <option value="36">36 meses</option>
+                        <option value="48">48 meses</option>
+                        <option value="60" selected>60 meses</option>
+                        <option value="72">72 meses</option>
+                        <option value="84">84 meses</option>
+                        <option value="96">96 meses</option>
+                        <option value="120">120 meses</option>
+                    </select>
+                </div>
+                
+                <button type="submit" id="btn-simular">Simular Financiamento</button>
+            </form>
+        </div>
+        
+        <div id="resultado-container" class="resultado">
+            <h2>Resultado da Simulação</h2>
+            
+            <div class="resultado-item">
+                <span>Valor solicitado:</span>
+                <span id="res-valor-solicitado">-</span>
+            </div>
+            
+            <div class="resultado-item">
+                <span>Valor aprovado:</span>
+                <span id="res-valor-aprovado">-</span>
+            </div>
+            
+            <div class="resultado-item">
+                <span>Taxa de juros:</span>
+                <span id="res-taxa-juros">-</span>
+            </div>
+            
+            <div class="resultado-item">
+                <span>Prazo total:</span>
+                <span id="res-prazo">-</span>
+            </div>
+            
+            <div class="resultado-item">
+                <span>Valor da parcela:</span>
+                <span id="res-parcela" class="resultado-destaque">-</span>
+            </div>
+            
+            <div class="resultado-item">
+                <span>Classificação de risco:</span>
+                <span id="res-risco">-</span>
+            </div>
+            
+            <div class="resultado-item">
+                <span>Capacidade de pagamento:</span>
+                <span id="res-capacidade">-</span>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <p>&copy; 2025 Banco da Amazônia - Todos os direitos reservados</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('simulador-form');
+            const resultadoContainer = document.getElementById('resultado-container');
+            const erroMensagem = document.getElementById('erro-mensagem');
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Limpar mensagens de erro
+                erroMensagem.style.display = 'none';
+                erroMensagem.textContent = '';
+                
+                // Capturar valores do formulário
+                const valorSolicitado = document.getElementById('valorSolicitado').value;
+                const rendaMensal = document.getElementById('rendaMensal').value;
+                const tipoFinanciamento = document.getElementById('tipoFinanciamento').value;
+                const prazoMeses = document.getElementById('prazoMeses').value;
+                
+                // Validar campos
+                if (!valorSolicitado || !rendaMensal || !tipoFinanciamento) {
+                    erroMensagem.textContent = 'Por favor, preencha todos os campos obrigatórios.';
+                    erroMensagem.style.display = 'block';
+                    return;
+                }
+                
+                try {
+                    // Desabilitar botão durante a requisição
+                    const btnSimular = document.getElementById('btn-simular');
+                    btnSimular.disabled = true;
+                    btnSimular.textContent = 'Processando...';
+                    
+                    // Preparar dados para envio
+                    const dadosSimulacao = {
+                        valorSolicitado: parseFloat(valorSolicitado),
+                        rendaMensal: parseFloat(rendaMensal),
+                        tipoFinanciamento: tipoFinanciamento,
+                        prazoMeses: parseInt(prazoMeses, 10)
+                    };
+                    
+                    // Chamar a API
+                    const response = await fetch('http://localhost:5099/api/financiamentos/simular', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(dadosSimulacao)
+                    });
+                    
+                    const data = await response.json();
+                    
+                    // Restaurar botão
+                    btnSimular.disabled = false;
+                    btnSimular.textContent = 'Simular Financiamento';
+                    
+                    if (data.success) {
+                        const resultado = data.data;
+                        
+                        // Preencher resultados
+                        document.getElementById('res-valor-solicitado').textContent = formatarMoeda(resultado.valorSolicitado);
+                        document.getElementById('res-valor-aprovado').textContent = formatarMoeda(resultado.valorFinanciamento);
+                        document.getElementById('res-taxa-juros').textContent = `${resultado.taxaJuros.toFixed(2)}% ao ano`;
+                        document.getElementById('res-prazo').textContent = `${resultado.prazoMeses} meses`;
+                        document.getElementById('res-parcela').textContent = formatarMoeda(resultado.parcela);
+                        document.getElementById('res-risco').textContent = resultado.classificacaoRisco;
+                        document.getElementById('res-capacidade').textContent = formatarMoeda(resultado.capacidadePagamento);
+                        
+                        // Exibir resultados
+                        resultadoContainer.style.display = 'block';
+                        
+                        // Rolar para o resultado
+                        resultadoContainer.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        erroMensagem.textContent = data.message || 'Erro ao realizar a simulação.';
+                        erroMensagem.style.display = 'block';
+                    }
+                } catch (error) {
+                    console.error('Erro ao simular financiamento:', error);
+                    erroMensagem.textContent = 'Erro de conexão. Verifique se o servidor está online.';
+                    erroMensagem.style.display = 'block';
+                    
+                    // Restaurar botão
+                    const btnSimular = document.getElementById('btn-simular');
+                    btnSimular.disabled = false;
+                    btnSimular.textContent = 'Simular Financiamento';
+                }
+            });
+            
+            // Função para formatar valores monetários
+            function formatarMoeda(valor) {
+                return new Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }).format(valor);
+            }
+        });
+    </script>
+</body>
+</html>

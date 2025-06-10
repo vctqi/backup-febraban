@@ -1,0 +1,134 @@
+.dashboard {
+  padding: 20px 0;
+}
+
+.dashboard-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.dashboard-header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, var(--text-color) 0%, var(--secondary-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.dashboard-header .description {
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.global-metrics, .team-metrics, .dora-info {
+  background-color: var(--card-background);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.global-metrics h2, .team-metrics h2, .dora-info h2 {
+  margin-bottom: 1.5rem;
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.75rem;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.team-selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.team-selector select {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: 1px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.team-selector select:focus {
+  box-shadow: 0 0 0 2px rgba(16, 179, 191, 0.4);
+}
+
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.info-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.info-card h3 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.info-card p, .info-card ul {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.info-card ul {
+  padding-left: 1.5rem;
+}
+
+.info-card li {
+  margin-bottom: 0.5rem;
+}
+
+.info-card .elite {
+  color: var(--success-color);
+  font-weight: 600;
+}
+
+.info-card .high {
+  color: var(--info-color);
+  font-weight: 600;
+}
+
+.info-card .medium {
+  color: var(--warning-color);
+  font-weight: 600;
+}
+
+.info-card .low {
+  color: var(--danger-color);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .team-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .team-selector select {
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+}

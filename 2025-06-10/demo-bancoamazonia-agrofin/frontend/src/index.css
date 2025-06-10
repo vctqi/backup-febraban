@@ -1,0 +1,47 @@
+/* Reset e estilos globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+:root {
+  --primary-color: #006B3F; /* Verde principal do Banco da Amazônia */
+  --secondary-color: #004D24; /* Verde escuro */
+  --tertiary-color: #F3B41D; /* Amarelo/dourado */
+  --background-color: #F5F5F5;
+  --text-color: #333333;
+  --light-color: #FFFFFF;
+  --gray-color: #CCCCCC;
+  --error-color: #FF3B30;
+  --success-color: #34C759;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
+}

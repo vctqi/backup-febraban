@@ -1,0 +1,138 @@
+.metric-card {
+  background: linear-gradient(135deg, rgba(30, 32, 64, 0.8) 0%, rgba(25, 27, 60, 0.9) 100%);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border-top: 3px solid transparent;
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: radial-gradient(circle at top right, rgba(16, 179, 191, 0.05), transparent 70%);
+  pointer-events: none;
+}
+
+.metric-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.status-elite {
+  border-color: var(--success-color);
+}
+
+.status-high {
+  border-color: var(--info-color);
+}
+
+.status-medium {
+  border-color: var(--warning-color);
+}
+
+.status-low {
+  border-color: var(--danger-color);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.card-header h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.status-badge.elite {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: var(--success-color);
+}
+
+.status-badge.high {
+  background-color: rgba(33, 150, 243, 0.15);
+  color: var(--info-color);
+}
+
+.status-badge.medium {
+  background-color: rgba(255, 193, 7, 0.15);
+  color: var(--warning-color);
+}
+
+.status-badge.low {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: var(--danger-color);
+}
+
+.card-value {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+.value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+  line-height: 1;
+  margin-right: 0.5rem;
+}
+
+.unit {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-right: 0.75rem;
+}
+
+.trend-icon {
+  position: relative;
+  top: 0.25rem;
+  opacity: 0.8;
+  stroke-width: 2;
+  fill: none;
+  stroke: currentColor;
+}
+
+.trend-icon.up {
+  color: var(--success-color);
+}
+
+.trend-icon.down.positive {
+  color: var(--success-color);
+}
+
+.trend-icon.down.negative {
+  color: var(--danger-color);
+}
+
+.trend-icon.up.negative {
+  color: var(--danger-color);
+}
+
+.trend-icon.stable {
+  color: var(--warning-color);
+}
+
+.card-description {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+}

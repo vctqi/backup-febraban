@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Financiamento Agropecuário - Banco da Amazônia</title>
+    <style>
+        :root {
+            --primary-color: #006633;
+            --secondary-color: #FFCC00;
+            --tertiary-color: #009933;
+            --light-color: #F5F5F5;
+            --dark-color: #333333;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 60px;
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+        
+        h1 {
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, Monaco, 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        pre {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #004d26;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .screenshot {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .instructions {
+            background-color: #fff8e6;
+            border-left: 4px solid var(--secondary-color);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .tab-container {
+            margin-bottom: 20px;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-button {
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            margin-right: 2px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        
+        .tab-button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="https://www.bancoamazonia.com.br/images/logo-banco-amazonia.png" alt="Banco da Amazônia" class="logo">
+                <h1>Simulador de Financiamento Agropecuário</h1>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <h2>Sobre o Projeto</h2>
+            <p>Este projeto é uma demonstração de um simulador de financiamento agropecuário que permite aos usuários calcular e comparar diferentes opções de crédito rural, inspirado no layout e funcionalidades do Banco da Amazônia.</p>
+            
+            <p>O simulador analisa o perfil do cliente, incluindo sua renda anual e outros fatores, para recomendar as melhores linhas de crédito e taxas disponíveis, ajudando os produtores rurais a tomarem decisões financeiras mais informadas.</p>
+            
+            <div class="instructions">
+                <h3>Como executar o projeto</h3>
+                <p>Este projeto está configurado com um backend Node.js/Express na porta 5019 e um frontend React na porta 8087.</p>
+                <p>Para iniciar ambos os servidores, execute:</p>
+                <pre>cd ~/demo-banco-amazonia
+chmod +x start-servers.sh
+./start-servers.sh</pre>
+            </div>
+        </div>
+        
+        <h2>Arquitetura do Sistema</h2>
+        <p>O sistema é dividido em duas partes principais:</p>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🖥️</div>
+                <h3>Frontend (React)</h3>
+                <p>Interface de usuário interativa construída com React, utilizando React Bootstrap para componentes de UI e Chart.js para visualizações gráficas.</p>
+                <p><strong>Porta:</strong> 8087</p>
+                <p><strong>Tecnologias:</strong> React, React Router, Bootstrap, Chart.js, Axios</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3>Backend (Node.js)</h3>
+                <p>API REST que fornece dados para o frontend, incluindo linhas de crédito disponíveis e cálculos de simulação de financiamento.</p>
+                <p><strong>Porta:</strong> 5019</p>
+                <p><strong>Tecnologias:</strong> Node.js, Express, Cors</p>
+            </div>
+        </div>
+        
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="openTab(event, 'tab1')">Página Inicial</button>
+                <button class="tab-button" onclick="openTab(event, 'tab2')">Simulador</button>
+                <button class="tab-button" onclick="openTab(event, 'tab3')">Resultado</button>
+            </div>
+            
+            <div id="tab1" class="tab-content active">
+                <h3>Página Inicial</h3>
+                <p>A página inicial apresenta informações sobre os serviços de financiamento agropecuário, destacando os benefícios e tipos de financiamento disponíveis.</p>
+                <img src="https://i.ibb.co/ry2Bf0R/home-page.jpg" alt="Página Inicial" class="screenshot">
+            </div>
+            
+            <div id="tab2" class="tab-content">
+                <h3>Simulador</h3>
+                <p>O simulador permite que o usuário insira dados como valor solicitado, prazo, renda anual e outras informações relevantes para calcular as melhores opções de financiamento.</p>
+                <img src="https://i.ibb.co/pn5JH7B/simulador.jpg" alt="Simulador" class="screenshot">
+            </div>
+            
+            <div id="tab3" class="tab-content">
+                <h3>Resultado da Simulação</h3>
+                <p>A página de resultado mostra a linha de crédito recomendada com base no perfil do cliente, além de outras opções disponíveis, com comparativos visuais e detalhes de cada opção.</p>
+                <img src="https://i.ibb.co/DtrQxDW/resultado.jpg" alt="Resultado" class="screenshot">
+            </div>
+        </div>
+        
+        <h2>Características Principais</h2>
+        
+        <div class="features">
+            <div class="feature-card">
+                <h3>Análise de Perfil de Risco</h3>
+                <p>O sistema analisa a renda anual e outros fatores para classificar o cliente em diferentes faixas de risco, o que afeta as taxas e limites de crédito disponíveis.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>Comparativo de Linhas de Crédito</h3>
+                <p>Apresenta diferentes linhas de crédito disponíveis, permitindo a comparação de taxas, prazos e condições em uma tabela detalhada.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>Visualização Gráfica</h3>
+                <p>Gráficos que mostram a comparação das taxas efetivas entre as diferentes linhas de crédito, facilitando a visualização da melhor opção.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>Cálculo de Economia</h3>
+                <p>Exibe a economia estimada com a linha recomendada em comparação com outras opções, ajudando o cliente a entender o impacto financeiro da escolha.</p>
+            </div>
+        </div>
+        
+        <h2>Implementação Técnica</h2>
+        
+        <h3>Estrutura do Projeto</h3>
+        <pre>demo-banco-amazonia/
+├── backend/
+│   ├── server.js         # Servidor Express com endpoints da API
+│   └── package.json      # Dependências do backend
+├── frontend/
+│   ├── public/           # Arquivos públicos
+│   ├── src/
+│   │   ├── components/   # Componentes reutilizáveis (Header, Footer, etc.)
+│   │   ├── pages/        # Páginas principais da aplicação
+│   │   ├── services/     # Serviços de API e utilitários
+│   │   └── styles/       # Arquivos CSS
+│   └── package.json      # Dependências do frontend
+├── start-servers.sh      # Script para iniciar ambos os servidores
+└── README.md             # Documentação do projeto</pre>
+        
+        <h3>Endpoints da API</h3>
+        <div class="card">
+            <h4>GET /api/linhas-credito</h4>
+            <p>Retorna todas as linhas de crédito disponíveis com suas características (taxas, prazos, valores mínimos e máximos).</p>
+            
+            <h4>GET /api/perfis-risco</h4>
+            <p>Retorna informações sobre os diferentes perfis de risco e suas características.</p>
+            
+            <h4>POST /api/simulacao</h4>
+            <p>Recebe os dados da simulação e retorna as opções de financiamento calculadas, incluindo a recomendação personalizada.</p>
+            <p><strong>Corpo da requisição:</strong></p>
+            <pre>{
+  "valorSolicitado": 50000,
+  "prazo": 48,
+  "rendaAnual": 120000,
+  "tipo": "agricultura",
+  "finalidade": "investimento",
+  "tempoAtividade": 5,
+  "possuiOutrosFinanciamentos": false,
+  "areaProdutiva": 100
+}</pre>
+        </div>
+        
+        <h2>Algoritmo de Recomendação</h2>
+        <p>O algoritmo que recomenda a melhor linha de crédito considera:</p>
+        <ul>
+            <li><strong>Perfil de risco:</strong> Baseado na renda anual e histórico</li>
+            <li><strong>Score adicional:</strong> Calculado a partir do tempo de atividade, área produtiva e outros financiamentos</li>
+            <li><strong>Compatibilidade:</strong> Verifica se o valor solicitado e prazo são compatíveis com cada linha</li>
+            <li><strong>Taxa efetiva:</strong> Calcula a taxa com ajustes baseados no perfil e score do cliente</li>
+        </ul>
+        
+        <p>O sistema prioriza as opções com menor taxa efetiva após todos os ajustes, garantindo a melhor economia para o cliente.</p>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 - Simulador de Financiamento Agropecuário - Banco da Amazônia (Demonstração)</p>
+        </div>
+    </footer>
+    
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].className = tabcontent[i].className.replace(" active", "");
+            }
+            
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).className += " active";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>

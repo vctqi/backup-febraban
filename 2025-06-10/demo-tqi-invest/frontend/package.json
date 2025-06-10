@@ -1,0 +1,24 @@
+{
+  "name": "tqi-invest-frontend",
+  "version": "1.0.0",
+  "description": "Frontend para demo TQI Invest",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html --port 8085",
+    "build": "parcel build src/index.html"
+  },
+  "keywords": ["investimentos", "tqi", "demo"],
+  "author": "TQI",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chart.js": "^3.5.0",
+    "react": "^17.0.2",
+    "react-chartjs-2": "^3.0.4",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}

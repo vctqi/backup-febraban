@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#006B3F" />
+    <meta
+      name="description"
+      content="Simulador de Financiamento Agropecuário do Banco da Amazônia"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Financiamento Agropecuário | Banco da Amazônia</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', Arial, sans-serif;
+        background-color: #f5f5f5;
+      }
+      
+      .app-container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .app-header {
+        background-color: #006B3F;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 8px 8px 0 0;
+      }
+      
+      .app-title {
+        margin: 0;
+        font-size: 24px;
+      }
+      
+      .app-content {
+        padding: 20px;
+      }
+      
+      .app-message {
+        text-align: center;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>Você precisa habilitar o JavaScript para executar este aplicativo.</noscript>
+    
+    <div class="app-container">
+      <header class="app-header">
+        <h1 class="app-title">Financiamento Agropecuário | Banco da Amazônia</h1>
+      </header>
+      
+      <div class="app-content">
+        <p class="app-message">
+          Estamos trabalhando para resolver um problema técnico. Por favor, tente novamente em alguns instantes.
+        </p>
+        <p class="app-message">
+          Para acessar o simulador de financiamento, visite a página oficial do <a href="https://www.bancoamazonia.com.br/financiamentos/amazonia-rural" target="_blank">Banco da Amazônia</a>.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

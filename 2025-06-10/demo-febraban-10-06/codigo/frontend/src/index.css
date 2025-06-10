@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.badge-risk {
+  padding: 8px 12px;
+  border-radius: 16px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.badge-risk-high {
+  background-color: #dc3545;
+  color: white;
+}
+
+.badge-risk-medium {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.badge-risk-low {
+  background-color: #198754;
+  color: white;
+}
+
+.alert-item {
+  border-left: 4px solid #dc3545;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.criteria-item {
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+.criteria-positive {
+  background-color: rgba(25, 135, 84, 0.1);
+  border-left: 3px solid #198754;
+}
+
+.criteria-negative {
+  background-color: rgba(220, 53, 69, 0.1);
+  border-left: 3px solid #dc3545;
+}
+
+.history-card {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.history-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

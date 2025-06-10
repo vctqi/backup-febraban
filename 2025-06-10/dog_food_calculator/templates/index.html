@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Ração para Cães</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Ração para Cães</h1>
+        <p>Calcule a quantidade diária de ração recomendada para seu cão com base no peso e nível de atividade física.</p>
+        
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="weight">Peso do cão (kg):</label>
+                <input type="number" id="weight" name="weight" step="0.1" min="1" max="100" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Nível de atividade física:</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="baixa" name="activity" value="baixa" required>
+                        <label for="baixa">Baixa (idosos ou sedentários)</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="media" name="activity" value="media" checked>
+                        <label for="media">Média (passeios regulares)</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="alta" name="activity" value="alta">
+                        <label for="alta">Alta (muito ativos ou atletas)</label>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn">Calcular</button>
+        </form>
+        
+        {% if result %}
+        <div class="result">
+            <h2>Resultado</h2>
+            
+            {% if result.erro %}
+                <div class="error-message">
+                    {{ result.erro }}
+                </div>
+            {% else %}
+                <p>Para um cão de <strong>{{ result.peso }} kg</strong> com nível de atividade 
+                <strong>
+                    {% if result.atividade == 'baixa' %}
+                        baixa
+                    {% elif result.atividade == 'media' %}
+                        média
+                    {% else %}
+                        alta
+                    {% endif %}
+                </strong>:
+                </p>
+                
+                <div class="result-card">
+                    <div class="result-item">
+                        <h3>Porte do cão</h3>
+                        <p>
+                            {% if result.porte == 'pequeno' %}
+                                Pequeno
+                            {% elif result.porte == 'medio' %}
+                                Médio
+                            {% else %}
+                                Grande
+                            {% endif %}
+                        </p>
+                        <p class="note">Faixa de peso: {{ result.faixa_peso }}</p>
+                    </div>
+                    
+                    <div class="result-item">
+                        <h3>Quantidade recomendada</h3>
+                        <p class="portion">{{ result.porcao }}</p>
+                        <p class="note">de ração por dia</p>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <p><strong>Observações importantes:</strong></p>
+                    <ul>
+                        <li>Esta é apenas uma recomendação geral. Consulte o veterinário para recomendações específicas.</li>
+                        <li>Ajuste a quantidade de acordo com a ração específica (verifique a embalagem).</li>
+                        <li>Para filhotes e fêmeas gestantes ou lactantes, consulte um veterinário.</li>
+                        <li>Divida a quantidade diária em 2-3 porções ao longo do dia.</li>
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
